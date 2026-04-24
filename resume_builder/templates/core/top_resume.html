@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>
+    <i class="fa fa-chart-line"></i>
+    Top Resumes
+</h2>
+
+{% for r in resumes %}
+
+    <div class="card">
+
+        <h3>
+            <i class="fa fa-user"></i>
+            <a href="/{{ r.slug }}/">
+                {{ r.name }}
+            </a>
+        </h3>
+
+        <p>
+            <i class="fa fa-eye"></i>
+            {{ r.views }}
+        </p>
+
+    </div>
+
+{% endfor %}
+
+{% endblock %}

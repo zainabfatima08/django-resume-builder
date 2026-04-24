@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<body style="background:#111; color:white; padding:30px;">
+
+<h1>{{ resume.name }}</h1>
+
+<h2>Skills</h2>
+<ul>
+{% for skill in resume.skill_set.all %}
+    <li>{{ skill.name }} ({{ skill.endorsements }})</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

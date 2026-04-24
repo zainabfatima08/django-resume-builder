@@ -1,0 +1,105 @@
+/* Universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #111827;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.logo {
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+
+/* CONTAINER */
+.container {
+    width: 70%;
+    margin: 30px auto;
+}
+
+
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+
+/* HEADINGS */
+h1, h2, h3 {
+    margin-bottom: 10px;
+}
+
+
+/* ROW (skills) */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+/* BUTTON */
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #2563eb;
+}
+
+
+/* LIST */
+#sections {
+    list-style: none;
+    padding: 0;
+}
+
+#sections li {
+    cursor: grab;
+}
+
+
+/* ICON SPACING */
+i {
+    margin-right: 6px;
+}

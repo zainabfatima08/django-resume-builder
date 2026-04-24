@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- ================= CREATE RESUME ================= -->
+
+<div class="card">
+
+    <h2>
+        <i class="fa fa-plus"></i>
+        Create Resume
+    </h2>
+
+    <form method="post" action="/create/">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter resume name"
+            required
+        >
+
+        <button type="submit">
+            <i class="fa fa-save"></i>
+            Create
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- ================= RESUME INFO ================= -->
+
+<div class="card">
+
+    <h1>
+        <i class="fa fa-user"></i>
+        {{ resume.name }}
+    </h1>
+
+    <p>
+        <i class="fa fa-eye"></i>
+        {{ resume.views }}
+    </p>
+
+    <a href="/pdf/{{ resume.slug }}/">
+        <i class="fa fa-file"></i>
+        Download Resume
+    </a>
+
+</div>
+
+
+<!-- ================= SKILLS ================= -->
+
+<div class="card">
+
+    <h2>
+        <i class="fa fa-code"></i>
+        Skills
+    </h2>
+
+    {% for skill in resume.skills.all %}
+        <div class="row">
+
+            <span>{{ skill.name }}</span>
+
+            <div>
+                <span id="skill-{{ skill.id }}">
+                    {{ skill.endorsements }}
+                </span>
+
+                <button
+                    hx-post  ="/endorse/{{ skill.id }}/"
+                    hx-target="#skill-{{ skill.id }}"
+                    hx-swap  ="innerHTML">
+
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+            </div>
+
+        </div>
+    {% endfor %}
+
+</div>
+
+
+<!-- ================= SECTIONS ================= -->
+
+<div class="card">
+
+    <h2>
+        <i class="fa fa-list"></i>
+        Sections
+    </h2>
+
+    <ul id="sections">
+
+        {% for section in resume.section_set.all %}
+            <li class="card" data-id="{{ section.id }}">
+                <i class="fa fa-grip-lines"></i>
+                {{ section.title }}
+            </li>
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+
+<!-- ================= SORTABLE JS ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+<script>
+Sortable.create(document.getElementById("sections"), {
+    animation: 150,
+
+    onEnd: function () {
+        let order = [];
+
+        document.querySelectorAll("#sections li").forEach(item => {
+            order.push(item.dataset.id);
+        });
+
+        fetch("/reorder/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken" : "{{ csrf_token }}"
+            },
+            body: JSON.stringify({ order: order })
+        });
+    }
+});
+</script>
+
+
+{% endblock %}

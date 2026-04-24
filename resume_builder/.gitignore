@@ -1,0 +1,52 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+*.egg-info/
+dist/
+build/
+
+# ======================
+# Virtual Environment
+# ======================
+.venv/
+venv/
+ENV/
+env/
+
+# ======================
+# Django
+# ======================
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# migrations (optional - keep if needed in repo)
+# */migrations/*
+# !*/migrations/__init__.py
+
+# ======================
+# IDE / Editor
+# ======================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.local

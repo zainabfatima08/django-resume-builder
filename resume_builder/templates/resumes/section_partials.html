@@ -1,0 +1,10 @@
+<ul id="sections">
+
+{% for section in sections %}
+    <li class="card" data-id="{{ section.id }}">
+        <i class="fa fa-grip-lines"></i>
+        {{ section.title }}
+    </li>
+{% endfor %}
+
+</ul>
